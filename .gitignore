@@ -1,0 +1,34 @@
+# Virtual environment
+venv/
+
+# Compiled Python files
+*.pyc
+__pycache__
+
+# Local development settings
+local_settings.py
+
+# Database file (if using SQLite)
+db.sqlite3
+
+# Static and media files (if not using a CDN)
+media/
+static/
+
+# Log files
+*.log
+
+# IDE-specific files and directories
+.vscode/
+.idea/
+
+# Dependency management files
+pipfile.lock
+Pipfile.lock
+Pipfile
+
+# Ignore secret keys and sensitive information
+.env
+
+# Ignore database migrations (if you use a different database, adjust the path accordingly)
+*/migrations/
