@@ -41,20 +41,20 @@ class CustomerDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
 
-    
 
 class OrderList(generics.ListCreateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
-    def perform_create(self, serializer):
-        order = serializer.save(customer=self.request.user)
-        order.calculate_total_price()
+class OrderByName(generics.ListAPIView):
+    serializer_class = OrderSerializer
+
+    def get_queryset(self):
+        name = self.kwargs['name']
+        queryset = Order.objects.filter(customer__name__icontains=name)
+        return queryset
+
 
 class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
-
-    def perform_create(self, serializer):
-        order = serializer.save(customer=self.request.user)
-        order.calculate_total_price()
